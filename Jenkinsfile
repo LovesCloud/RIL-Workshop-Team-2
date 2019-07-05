@@ -51,8 +51,7 @@ node {
 
       sh"""#!/bin/bash
          docker rmi lovescloud/crud-mysql-vuejs-rilwt2:${BUILD_NUMBER}
-      """
-      
+      """ 
    }
 
    stage('Trigger-Deploy') {
