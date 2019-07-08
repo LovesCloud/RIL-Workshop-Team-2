@@ -34,13 +34,13 @@ node {
    }
 
    stage('Docker-Push') {
-   /*   withDockerRegistry(credentialsId: 'nexus', url: 'http://nexus.loves.cloud:8083') {
+      withDockerRegistry(credentialsId: 'nexus', url: 'http://nexus.loves.cloud:8083') {
           sh"""#!/bin/bash
              docker tag crud-mysql-vuejs-rilwt2:${BUILD_NUMBER} nexus.loves.cloud:8083/crud-mysql-vuejs-rilwt2:${BUILD_NUMBER}
              docker push nexus.loves.cloud:8083/crud-mysql-vuejs-rilwt2:${BUILD_NUMBER}
              docker tag  nexus.loves.cloud:8083/crud-mysql-vuejs-rilwt2:${BUILD_NUMBER} crud-mysql-vuejs-rilwt2:${BUILD_NUMBER}
           """
-      }*/
+      }
 
       withDockerRegistry(credentialsId: 'dockerhub') {
          sh"""#!/bin/bash
