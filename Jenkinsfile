@@ -11,6 +11,7 @@ node {
       scannerHome = tool 'sonar_scanner';
    }
 
+   
    stage('Build') {
       sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
         
@@ -76,6 +77,7 @@ node {
    stage('Cleanup') {
       cleanWs disableDeferredWipeout: true, notFailBuild: true
       echo "Cleaned Up" 
-      emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+   emailext body: " ${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'rajni@loves.cloud,Niranjan.bande@ril.com,prashantb.kadam@gmail.com,Bhakti.Chheda@ril.com,amanpreetmultani@gmail.com'
+
    }
 }
